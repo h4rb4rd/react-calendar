@@ -1,15 +1,19 @@
 import React, { FC } from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { Layout } from 'antd'
 
 import AppRouter from './components/AppRouter'
+import NavBar from './components/NavBar'
+
+import './App.css'
 
 const App: FC = () => {
 	return (
-		<div>
-			<BrowserRouter>
+		<Layout>
+			<NavBar />
+			<Layout.Content>
 				<AppRouter />
-			</BrowserRouter>
-		</div>
+			</Layout.Content>
+		</Layout>
 	)
 }
 
