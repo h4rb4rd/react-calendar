@@ -1,12 +1,21 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { Layout } from 'antd'
+import { useActions } from './hooks/useActions'
 
 import AppRouter from './components/AppRouter'
 import NavBar from './components/NavBar'
 
 import './App.css'
+import { IUser } from './models/IUser'
 
 const App: FC = () => {
+	const { setUser, setIsAuth } = useActions()
+	useEffect(() => {
+		if (localStorage.getItem('auth')) {
+			setUser({ username: localStorage.getItem('username' || '') } as IUser)
+			setIsAuth(true)
+		}
+	}, [])
 	return (
 		<Layout>
 			<NavBar />

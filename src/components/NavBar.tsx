@@ -3,13 +3,13 @@ import { Layout, Row, Col, Menu } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { RouteNames } from '../routes'
 import { useTypedSelector } from '../hooks/useTypedSelector'
-import { useDispatch } from 'react-redux'
 import { AuthActionCreators } from '../store/reducers/auth/action-creators'
+import { useActions } from '../hooks/useActions'
 
 const NavBar: FC = () => {
 	const { isAuth, user } = useTypedSelector(state => state.auth)
 	const navigate = useNavigate()
-	const dispatch = useDispatch()
+	const { logout } = useActions()
 
 	return (
 		<Layout.Header
@@ -18,10 +18,7 @@ const NavBar: FC = () => {
 			{isAuth && <div style={{ color: 'white' }}>{user.username}</div>}
 			<Menu theme='dark' selectable={false}>
 				{isAuth ? (
-					<Menu.Item
-						onClick={() => dispatch(AuthActionCreators.logout())}
-						key='1'
-					>
+					<Menu.Item onClick={logout} key='1'>
 						Logout
 					</Menu.Item>
 				) : (
