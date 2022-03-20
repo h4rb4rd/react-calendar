@@ -1,10 +1,9 @@
 import React, { FC } from 'react'
-import { Layout, Row, Col, Menu } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import { Layout, Menu } from 'antd'
 import { RouteNames } from '../routes'
 import { useTypedSelector } from '../hooks/useTypedSelector'
-import { AuthActionCreators } from '../store/reducers/auth/action-creators'
 import { useActions } from '../hooks/useActions'
+import { useNavigate } from 'react-router-dom'
 
 const NavBar: FC = () => {
 	const { isAuth, user } = useTypedSelector(state => state.auth)
